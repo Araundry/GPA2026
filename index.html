@@ -4,9 +4,57 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>洗濯物カンソーク君</title>
+   <style>
+       /* ベランダっぽく、爽やかなデザインに整えるCSS */
+       body { font-family: sans-serif; text-align: center; background: #e0f2f1; color: #333; padding: 20px; }
+       h1 { color: #00796b; margin-bottom: 5px; }
+       .intro { font-size: 14px; color: #555; margin-bottom: 20px; }
+       .time { font-size: 12px; color: #888; margin-bottom: 30px; }
+       .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; max-width: 900px; margin: 0 auto; }
+       .card { background: white; padding: 15px; border-radius: 12px; width: 140px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+       .label { font-size: 13px; color: #00796b; font-weight: bold; }
+       .value { font-size: 26px; font-weight: bold; color: #2c3e50; margin: 8px 0; }
+       .unit { font-size: 13px; color: #666; }
+   </style>
 </head>
 <body>
    <h1>洗濯物カンソーク君</h1>
-   <p>こちらは洗濯物カンソーク君のウェブサイトです。あなたのおうちのベランダ、観測しちゃうぞ☆</p>
+   <p class="intro">こちらは洗濯物カンソーク君のウェブサイトです。あなたのおうちのベランダ、観測しちゃうぞ☆</p>
+   
+   <!-- データがいつ更新されたかを表示する場所 -->
+   <div class="time">ベランダ同期中... (最終観測: <span id="update-time">--:--:--</span>)</div>
+
+   <!-- 5つのセンサーデータを並べる場所 -->
+   <div class="container">
+       <div class="card"><div class="label">温度</div><div class="value" id="temp">--</div><div class="unit">°C</div></div>
+       <div class="card"><div class="label">湿度</div><div class="value" id="humid">--</div><div class="unit">%</div></div>
+       <div class="card"><div class="label">気圧</div><div class="value" id="press">--</div><div class="unit">hPa</div></div>
+       <div class="card"><div class="label">明るさ</div><div class="value" id="lux">--</div><div class="unit">lx</div></div>
+       <div class="card"><div class="label">風速</div><div class="value" id="wind">--</div><div class="unit">m/s</div></div>
+   </div>
+
+   <script>
+       // ラズパイから届く予定の data.json を読み込むプログラム
+       async function fetchKansoku() {
+           try {
+               // キャッシュ（古いデータが残る現象）を防ぐおまじない付きで読み込み
+               const response = await fetch('./data.json?t=' + Date.now());
+               const data = await response.json();
+               
+               // 画面の「--」の部分を、実際のデータに書き換える
+               document.getElementById('temp').innerText = data.temperature;
+               document.getElementById('humid').innerText = data.humidity;
+               document.getElementById('press').innerText = data.pressure;
+               document.getElementById('lux').innerText = data.lux;
+               document.getElementById('wind').innerText = data.wind_speed;
+               document.getElementById('update-time').innerText = data.last_update;
+           } catch (e) {
+               console.log("データの読み込みを待機中...", e);
+           }
+       }
+       // ページを開いた瞬間と、その後30秒ごとに勝手にチェックしに行く
+       fetchKansoku();
+       setInterval(fetchKansoku, 30000);
+   </script>
 </body>
 </html>
