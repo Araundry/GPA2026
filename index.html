@@ -5,36 +5,37 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>洗濯物カンソーク君</title>
    <style>
-       /* 4個用にバランスを再調整したCSS */
-       body/*←ページ全体の設定*/ { 
-          font-family:/*←フォント*/
-          sans-serif; text-align: center;/*←現:中央揃え*/
-          background: #E0F2F1;/*←背景色*/
-          color: #333;/*←文字色*/
-          padding: 15px;/*←内側余白*/
-          margin: 0;/*←外側余白*/ 
+       /* 2行（3個・2個）で綺麗に整列させるためのCSS */
+       body/*←ページ全体の設定*/ {
+           font-family: sans-serif; /*←フォント*/
+           text-align:  center;     /*←現:中央揃え*/
+           background:  #e0f2f1;    /*←背景色*/
+           color:       #333;       /*←文字色*/
+           padding:     15px;       /*←内側余白*/
+           margin:      0;          /*←外側余白*/
        }
        h1 { color: #00796b; margin-bottom: 5px; font-size: 24px; }
        .intro { font-size: 13px; color: #555; margin-bottom: 15px; padding: 0 10px; }
        .time { font-size: 11px; color: #888; margin-bottom: 20px; }
        
+       /* カードを囲む枠：自動で折り返して中央に寄せる設定 */
        .container { 
            display: flex; 
            flex-wrap: wrap; 
            justify-content: center; 
-           gap: 10px; 
-           max-width: 100%; 
+           gap: 12px; 
+           max-width: 360px; /* 👈 ここで幅を制限して、自動的に3個と2個に分かれるようにしています */
            margin: 0 auto; 
        }
        
-       /* 4つがバランスよく画面に広がるように調整 */
+       /* 2行になっても1個ずつが引き締まって見えるサイズ */
        .card { 
            background: white; 
            padding: 15px 5px; 
            border-radius: 10px; 
            flex: 1;
-           min-width: 70px; 
-           max-width: 130px; 
+           min-width: 90px; /* 👈 縮みすぎないようにして、3個並んだら次の行に落とす */
+           max-width: 110px; 
            box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
        }
        
@@ -49,10 +50,11 @@
    
    <div class="time">ベランダ同期中... (最終観測: <span id="update-time">--:--:--</span>)</div>
 
-   <!-- 気圧を削除して4つに並び替えました -->
+   <!-- 気圧を復活させて5つのカードにしました -->
    <div class="container">
        <div class="card"><div class="label">温度</div><div class="value" id="temp">--</div><div class="unit">°C</div></div>
        <div class="card"><div class="label">湿度</div><div class="value" id="humid">--</div><div class="unit">%</div></div>
+       <div class="card"><div class="label">気圧</div><div class="value" id="press">--</div><div class="unit">hPa</div></div>
        <div class="card"><div class="label">明るさ</div><div class="value" id="lux">--</div><div class="unit">lx</div></div>
        <div class="card"><div class="label">風速</div><div class="value" id="wind">--</div><div class="unit">m/s</div></div>
    </div>
@@ -63,9 +65,10 @@
                const response = await fetch('./data.json?t=' + Date.now());
                const data = await response.json();
                
-               // 気圧の読み込み処理を削除しました
+               // JavaScript側でも気圧（press）をしっかりキャッチして流し込む
                document.getElementById('temp').innerText = data.temperature;
                document.getElementById('humid').innerText = data.humidity;
+               document.getElementById('press').innerText = data.pressure; // 👈 復活！
                document.getElementById('lux').innerText = data.lux;
                document.getElementById('wind').innerText = data.wind_speed;
                document.getElementById('update-time').innerText = data.last_update;
@@ -78,4 +81,3 @@
    </script>
 </body>
 </html>
-
