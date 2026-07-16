@@ -60,6 +60,13 @@
        <div class="card"><div class="label">風速</div><div class="value" id="wind">--</div><div class="unit">m/s</div></div>
    </div>
 
+   <!-- 🤖 【新しく追加】5大カードの下にくる「雨観測・干し時」のメッセージ枠 -->
+   <div style="background: white; border-radius: 10px; padding: 15px; max-width: 330px; margin: 20px auto 0 auto; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+       <div style="font-size: 13px; color: #00796b; font-weight: bold; margin-bottom: 5px;">🤖 AI洗濯アドバイザーの診断</div>
+       <div id="laundry-match" style="font-size: 18px; font-weight: bold; color: #2c3e50; margin-bottom: 5px;">🤔 計算中...</div>
+       <div id="rain-forecast" style="font-size: 12px; color: #666;">データを読み込んでいます。</div>
+   </div>
+   
    <script>
        async function fetchKansoku() {
            try {
@@ -73,6 +80,8 @@
                document.getElementById('lux').innerText = data.lux;
                document.getElementById('wind').innerText = data.wind_speed;
                document.getElementById('update-time').innerText = data.last_update;
+               document.getElementById('laundry-match').innerText = data.laundry_match;
+               document.getElementById('rain-forecast').innerText = data.rain_forecast;
            } catch (e) {
                console.log("データの読み込みを待機中...", e);
            }
