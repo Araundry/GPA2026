@@ -1,10 +1,10 @@
 {
     "temperature": 24.3,
-    "humidity": 60.6,
+    "humidity": 60.5,
     "pressure": 992.5,
-    "lux": 847.3,
-    "wind_speed": 3.1,
+    "lux": 845.6,
+    "wind_speed": 2.6,
     "rain_forecast": "雨予測テストコード",
     "laundry_match": "干し時テストコード",
-    "last_update": "2026-07-17 16:55:28"
+    "last_update": "2026-07-17 16:56:31"
 }
