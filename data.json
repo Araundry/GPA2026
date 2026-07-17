@@ -1,8 +1,8 @@
 {
-    "temperature": 25.0,
-    "humidity": 56.4,
+    "temperature": 25.1,
+    "humidity": 56.5,
     "pressure": 990.9,
-    "lux": 1581.6,
+    "lux": 1589.1,
     "wind_speed": 0.0,
-    "last_update": "2026-07-17 13:35:59"
+    "last_update": "2026-07-17 13:36:05"
 }
