@@ -1,10 +1,10 @@
 {
     "temperature": 25.0,
-    "humidity": 51.1,
+    "humidity": 50.8,
     "pressure": 994.5,
-    "lux": 951.6,
-    "wind_speed": 0.5,
+    "lux": 1002.1,
+    "wind_speed": 0.0,
     "rain_judge": "まぁ平気",
     "laundry_match": "干し時テストコード",
-    "last_update": "2026-07-21 15:39:37"
+    "last_update": "2026-07-21 15:40:41"
 }
