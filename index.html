@@ -66,6 +66,12 @@
        <div id="laundry-match" style="font-size: 18px; font-weight: bold; color: #2c3e50; margin-bottom: 5px;">🤔 計算中...</div>
        <div id="rain-forecast" style="font-size: 12px; color: #666;">データを読み込んでいます。</div>
    </div>
+      <!-- ☔ 雨の予測カード（アドバイザーの下に追加） -->
+   <div style="background: white; border-radius: 10px; padding: 15px; max-width: 330px; margin: 15px auto 0 auto; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+       <div style="font-size: 13px; color: #00796b; font-weight: bold; margin-bottom: 5px;">雨の予測</div>
+       <div id="rain_judge" style="font-size: 15px; color: #2c3e50;">データを読み込んでいます…</div>
+   </div>
+
    
    <script>
        async function fetchKansoku() {
@@ -81,7 +87,7 @@
                document.getElementById('wind').innerText = data.wind_speed;
                document.getElementById('update-time').innerText = data.last_update;
                document.getElementById('laundry-match').innerText = data.laundry_match;
-               document.getElementById('rain-forecast').innerText = data.rain_forecast;
+               document.getElementById('rain_judge').innerText = data.rain_judge;
            } catch (e) {
                console.log("データの読み込みを待機中...", e);
            }
