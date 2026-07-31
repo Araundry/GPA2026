@@ -1,10 +1,10 @@
 {
-    "temperature": 24.6,
-    "humidity": 52.7,
+    "temperature": 24.7,
+    "humidity": 53.0,
     "pressure": 991.6,
-    "lux": 647.8,
+    "lux": 643.5,
     "wind_speed": 0.0,
-    "rain_judge": "雨は降らず、外で干せそうです。今日の天気は快適です。",
-    "laundry_match": "今すぐ晴天の風が乾かす、外干しベストタイム！",
-    "last_update": "2026-07-31 11:11:45"
+    "rain_judge": "午後は小雨の可能性があり、外出時は傘を用意してください。",
+    "laundry_match": "晴れ間を狙って、外干しで早乾き、花粉対策もバッチリ。",
+    "last_update": "2026-07-31 11:12:48"
 }
