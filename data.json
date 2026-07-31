@@ -1,10 +1,10 @@
 {
     "temperature": 24.7,
-    "humidity": 56.1,
-    "pressure": 991.3,
-    "lux": 697.8,
-    "wind_speed": 0.4,
+    "humidity": 56.2,
+    "pressure": 991.4,
+    "lux": 724.7,
+    "wind_speed": 0.0,
     "rain_judge": "雨は降らず、晴天が続き乾燥も良好です。外出も安心です。今日の洗濯に最適",
     "laundry_match": "風が弱く乾き速い、今すぐ外干ししよう！洗濯日和です",
-    "last_update": "2026-07-31 11:28:30"
+    "last_update": "2026-07-31 11:29:37"
 }
