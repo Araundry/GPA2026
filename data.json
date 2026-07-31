@@ -1,10 +1,10 @@
 {
-    "temperature": 24.5,
+    "temperature": 24.6,
     "humidity": 52.4,
-    "pressure": 991.5,
-    "lux": 648.3,
+    "pressure": 991.6,
+    "lux": 668.2,
     "wind_speed": 0.0,
     "rain_judge": "雨は降らず、外で干せそうです。今日の天気は快適です。",
     "laundry_match": "今すぐ晴天の風が乾かす、外干しベストタイム！",
-    "last_update": "2026-07-31 11:09:43"
+    "last_update": "2026-07-31 11:10:44"
 }
