@@ -1,10 +1,10 @@
 {
-    "temperature": 26.1,
-    "humidity": 60.6,
+    "temperature": 26.2,
+    "humidity": 58.4,
     "pressure": 989.1,
-    "lux": 339.8,
+    "lux": 40.9,
     "wind_speed": 0.0,
-    "rain_judge": "雨は降らず、晴れが続く見込みです。外出も安心。",
-    "laundry_match": "今日は日差し強め、外干しで早く乾く！快適に過ごせます。",
-    "last_update": "2026-08-01 15:07:08"
+    "rain_judge": "午後は小雨の可能性があり、外干しは要注意です。",
+    "laundry_match": "風がなく湿度高め、室内干しで早く乾かそう！",
+    "last_update": "2026-08-01 15:08:11"
 }
