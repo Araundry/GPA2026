@@ -1,10 +1,10 @@
 {
-    "temperature": 23.7,
-    "humidity": 61.6,
+    "temperature": 23.8,
+    "humidity": 64.4,
     "pressure": 989.2,
-    "lux": 0.0,
-    "wind_speed": 0.3,
-    "rain_judge": "現在の晴天と低降水確率で、雨は降らず洗濯に最適です。",
-    "laundry_match": "風がやさしく乾く、外干しで爽やかに仕上げよう！",
-    "last_update": "2026-07-31 11:39:19"
+    "lux": 193.0,
+    "wind_speed": 0.0,
+    "rain_judge": "雨は降らず、午後も晴れの可能性が高いです。",
+    "laundry_match": "外で干すとすぐ乾く、日陰で色落ち防止、風がなくても安心",
+    "last_update": "2026-08-01 14:50:22"
 }
