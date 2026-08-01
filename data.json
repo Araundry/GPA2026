@@ -1,10 +1,10 @@
 {
-    "temperature": 27.4,
-    "humidity": 54.2,
-    "pressure": 989.0,
+    "temperature": 27.6,
+    "humidity": 53.2,
+    "pressure": 989.1,
     "lux": 214.5,
     "wind_speed": 0.0,
     "rain_judge": "今日の天気は、雨は降らず、晴れが続く見込みです。",
     "laundry_match": "外で干すと早乾き、乾燥機は不要！今日がベストです。",
-    "last_update": "2026-08-01 15:14:39"
+    "last_update": "2026-08-01 15:15:41"
 }
