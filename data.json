@@ -1,10 +1,10 @@
 {
-    "temperature": 25.3,
-    "humidity": 63.1,
-    "pressure": 989.1,
-    "lux": 375.8,
-    "wind_speed": 0.4,
+    "temperature": 25.5,
+    "humidity": 62.7,
+    "pressure": 989.2,
+    "lux": 359.7,
+    "wind_speed": 0.0,
     "rain_judge": "雨は降らず、午後も晴れの可能性が高いです。",
     "laundry_match": "外で干すとすぐ乾く、日陰で色落ち防止、風がなくても安心",
-    "last_update": "2026-08-01 15:02:55"
+    "last_update": "2026-08-01 15:03:57"
 }
