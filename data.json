@@ -1,10 +1,8 @@
 {
     "temperature": 25.2,
-    "humidity": 57.1,
+    "humidity": 57.3,
     "pressure": 998.9,
-    "lux": 862.8,
-    "wind_speed": 4.4,
-    "rain_judge": "午後は小雨の可能性あり、外出は要注意です。",
-    "laundry_match": "風が強いので室内干しで早く乾く、臭い防止もバッチリ。",
-    "last_update": "2026-08-21 16:13:36"
+    "lux": 766.1,
+    "wind_speed": 0.0,
+    "last_update": "2026-08-21 16:13:41"
 }
