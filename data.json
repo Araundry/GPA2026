@@ -1,10 +1,10 @@
 {
-    "temperature": 25.5,
-    "humidity": 56.2,
+    "temperature": 25.3,
+    "humidity": 56.9,
     "pressure": 998.8,
-    "lux": 827.9,
-    "wind_speed": 4.7,
-    "rain_judge": "午後は小雨の可能性があり、注意が必要です。",
-    "laundry_match": "晴れ間を狙って、外干しでさっぱり乾かそう！",
-    "last_update": "2026-08-21 16:11:48"
+    "lux": 830.1,
+    "wind_speed": 5.1,
+    "rain_judge": "午後は雨が降る可能性が高く、傘が必要ですので。",
+    "laundry_match": "今日の洗濯は外で乾かすと、すっきり爽快！",
+    "last_update": "2026-08-21 16:12:27"
 }
