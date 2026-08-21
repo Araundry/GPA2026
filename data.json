@@ -1,10 +1,8 @@
 {
     "temperature": 25.4,
-    "humidity": 56.3,
+    "humidity": 56.2,
     "pressure": 998.9,
-    "lux": 905.3,
+    "lux": 859.6,
     "wind_speed": 0.0,
-    "rain_judge": "午後は雨の可能性が高く、外干しは控えた方が◎",
-    "laundry_match": "室内乾燥でふんわり、花粉対策もバッチリです",
-    "last_update": "2026-08-21 16:23:38"
+    "last_update": "2026-08-21 16:24:07"
 }
