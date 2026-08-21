@@ -1,10 +1,8 @@
 {
     "temperature": 25.6,
-    "humidity": 56.0,
+    "humidity": 56.1,
     "pressure": 998.8,
-    "lux": 870.9,
+    "lux": 866.6,
     "wind_speed": 0.0,
-    "rain_judge": "午後は雨の可能性が高く、外出時は傘を用意してください。",
-    "laundry_match": "晴れ間を狙って、外干しで早乾き、洗濯物がふんわり。",
-    "last_update": "2026-08-21 16:10:18"
+    "last_update": "2026-08-21 16:10:33"
 }
