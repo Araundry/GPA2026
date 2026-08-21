@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+   <meta http-equiv="refresh" content="60">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>洗濯物カンソーク君</title>
+   <style>
+       /* 2行（3個・2個）で綺麗に整列させるためのCSS */
+       body/*←ページ全体の設定*/ {
+           font-family: sans-serif; /*←フォント*/
+           text-align:  center;     /*←現:中央揃え*/
+           background:  #e0f2f1;    /*←背景色*/
+           color:       #333;       /*←文字色*/
+           padding:     15px;       /*←内側余白*/
+           margin:      0;          /*←外側余白*/
+       }
+       h1 { color: #00796b; margin-bottom: 5px; font-size: 24px; }
+       .intro { font-size: 13px; color: #555; margin-bottom: 15px; padding: 0 10px; }
+       .time { font-size: 11px; color: #888; margin-bottom: 20px; }
+       
+       /* カードを囲む枠：自動で折り返して中央に寄せる設定 */
+       .container { 
+           display: flex; 
+           flex-wrap: wrap; 
+           justify-content: center; 
+           gap: 12px; 
+           max-width: 360px; /* 👈 ここで幅を制限して、自動的に3個と2個に分かれるようにしています */
+           margin: 0 auto; 
+       }
+       
+       /* 2行になっても1個ずつが引き締まって見えるサイズ */
+       .card { 
+           background: white; 
+           padding: 15px 5px; 
+           border-radius: 10px; 
+           flex: 1;
+           min-width: 90px; /* 👈 縮みすぎないようにして、3個並んだら次の行に落とす */
+           max-width: 110px; 
+           box-shadow: 0 4px 10px rgba(0,0,0,0.05); 
+       }
+       
+       .label { font-size: 12px; color: #00796b; font-weight: bold; }
+       .value { font-size: 22px; font-weight: bold; color: #2c3e50; margin: 5px 0; }
+       .unit { font-size: 11px; color: #666; }
+   </style>
+</head>
+<body>
+   <h1>洗濯物カンソーク君</h1>
+   <p class="intro">こちらは洗濯物カンソーク君のウェブサイトです。あなたのおうちのベランダ、観測しちゃうぞ☆</p>
+   
+   <div class="time">ベランダ同期中... (最終観測: <span id="update-time">--:--:--</span>)</div>
+
+   <!-- 5大センサーカード -->
+   <div class="container">
+       <div class="card"><div class="label">気温</div><div class="value" id="temp">--</div><div class="unit">°C</div></div>
+       <div class="card"><div class="label">湿度</div><div class="value" id="humid">--</div><div class="unit">%</div></div>
+       <div class="card"><div class="label">気圧</div><div class="value" id="press">--</div><div class="unit">hPa</div></div>
+       <div class="card"><div class="label">明るさ</div><div class="value" id="lux">--</div><div class="unit">lx</div></div>
+       <div class="card"><div class="label">風速</div><div class="value" id="wind">--</div><div class="unit">m/s</div></div>
+   </div>
+
+   <!-- 🤖 さくらAI専用の診断メッセージ枠 -->
+   <div style="background: white; border-radius: 10px; padding: 15px; max-width: 330px; margin: 20px auto 0 auto; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-left: 5px solid #00796b;">
+       <div style="font-size: 13px; color: #00796b; font-weight: bold; margin-bottom: 5px;">🤖 さくらAI洗濯アドバイザー</div>
+       <div id="laundry-match" style="font-size: 16px; font-weight: bold; color: #2c3e50; line-height: 1.4; padding: 5px 0;">🤔 状況を分析中...</div>
+   </div>
+
+   <!-- ☔ AIが考えた雨の予測カード -->
+   <div style="background: white; border-radius: 10px; padding: 15px; max-width: 330px; margin: 15px auto 0 auto; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+       <div style="font-size: 13px; color: #00796b; font-weight: bold; margin-bottom: 5px;">☔ AIの雨予測</div>
+       <div id="rain_judge" style="font-size: 15px; color: #2c3e50; font-weight: bold;">データを読み込んでいます…</div>
+   </div>
+
+   <script>
+       async function fetchKansoku() {
+           try {
+               const response = await fetch('./data.json?t=' + Date.now());
+               const data = await response.json();
+
+               // 【今あるコード】データを画面に入れる処理
+               const tempEl = document.getElementById('temp'); // 👈 色を変えるために変数にします
+               tempEl.innerText = data.temperature;
+
+               const humidEl = document.getElementById('humid'); // 👈 ここに追加！
+               humidEl.innerText = data.humidity;
+
+               const pressEl = document.getElementById('press'); // 👈 ここに追加！
+               pressEl.innerText = data.pressure;
+
+               const luxEl = document.getElementById('lux');     // 👈 ここに追加！
+               luxEl.innerText = data.lux;
+
+               const windEl = document.getElementById('wind');   // 👈 ここに追加！
+               windEl.innerText = data.wind_speed;
+              
+               document.getElementById('temp').innerText = data.temperature;
+               document.getElementById('humid').innerText = data.humidity;
+               document.getElementById('press').innerText = data.pressure;
+               document.getElementById('lux').innerText = data.lux;
+               document.getElementById('wind').innerText = data.wind_speed;
+               document.getElementById('update-time').innerText = data.last_update;
+               document.getElementById('laundry-match').innerText = data.laundry_match;
+               document.getElementById('rain_judge').innerText = data.rain_judge; // 👈 ここもAIの言葉がそのまま入るよ！
+
+               // 🔥 気温の色分けロジック
+               const temp = parseFloat(data.temperature);
+               if (temp < 10) {
+                   tempEl.style.color = '#333333'; // 10℃未満：黒
+               } else if (temp >= 10 && temp < 15) {
+                   tempEl.style.color = '#2980b9'; // 10℃以上15℃未満：青
+               } else if (temp >= 15 && temp < 20) {
+                   tempEl.style.color = '#4fc3f7'; // 15℃以上20℃未満：水色
+               } else if (temp >= 20 && temp < 25) {
+                   tempEl.style.color = '#2ecc71'; // 20℃以上25℃未満：緑
+               } else if (temp >= 25 && temp < 30) {
+                   tempEl.style.color = '#ff9800'; // 25℃以上30℃未満：オレンジ
+               } else if (temp >= 30 && temp < 35) {
+                   tempEl.style.color = '#e74c3c'; // 30℃以上35℃未満：赤
+               } else if (temp >= 35) {
+                   tempEl.style.color = '#9b59b6'; // 35℃以上：紫
+               }
+
+               // 💧 湿度の色分けロジック
+               const humid = parseFloat(data.humidity);
+               if (humid < 40) {
+                   humidEl.style.color = '#e74c3c'; // 40%未満：赤
+               } else if (humid >= 40 && humid < 50) {
+                   humidEl.style.color = '#ff9800'; // 40%以上50%未満：オレンジ
+               } else if (humid >= 50 && humid < 60) {
+                   humidEl.style.color = '#2ecc71'; // 50%以上60%未満：緑
+               } else if (humid >= 60 && humid < 75) {
+                   humidEl.style.color = '#4fc3f7'; // 60%以上75%未満：水色
+               } else if (humid >= 75 && humid < 90) {
+                   humidEl.style.color = '#2980b9'; // 75%以上90%未満：青
+               }else if (humid >= 90) {
+                   humidEl.style.color = '#9b59b6'; // 90%以上：紫
+               }
+
+               // 🎈 気圧の色分けロジック
+               const press = parseFloat(data.pressure);
+               if (press < 1000) {
+                   pressEl.style.color = '#2980b9'; // 1000hPa未満：青
+               } else if (press >= 1000 && press < 1010) {
+                   pressEl.style.color = '#4fc3f7'; // 1000hPa以上1010hPa未満：水色
+               } else if (press >= 1010 && press < 1015) {
+                   pressEl.style.color = '#ff9800'; // 1010hPa以上1015hPa未満：オレンジ
+               } else if (press >= 1013) {
+                   pressEl.style.color = '#e74c3c'; // 1015hPa以上：赤
+               }
+
+               // ☀️ 明るさの色分けロジック
+               const lux = parseFloat(data.lux);
+               if (lux < 10000) {
+                   luxEl.style.color = '#333333'; // 10000lx未満：グレー
+               } else if (lux >= 10000 && lux < 25000) {
+                   luxEl.style.color = '#2980b9'; // 10000lx以上25000lx未満：青
+               } else if (lux >= 25000 && lux < 50000) {
+                   luxEl.style.color = '#2ecc71'; // 25000lx以上50000lx未満：緑
+               } else if (lux >= 50000 && lux < 100000) {
+                   luxEl.style.color = '#ff9800'; // 50000lx以上100000lx未満：オレンジ
+               } else if (lux >= 100000) {
+                   luxEl.style.color = '#e74c3c'; // 100000lx以上：赤
+               }
+
+               // 🌀 風速の色分けロジック
+               const wind = parseFloat(data.wind_speed);
+               if (wind < 1.0) {
+                   windEl.style.color = '#7f8c8d'; // 1.0m/s未満：グレー
+               } else if (wind >= 1.0 && wind < 3.0) {
+                   windEl.style.color = '#2ecc71'; // 1.0m/s以上3.0m/s未満：緑
+               } else if (wind >= 3.0 && wind < 5.0) {
+                   windEl.style.color = '#ff9800'; // 3.0m/s以上5.0m/s未満：オレンジ
+               } else if (wind >= 5.0) {
+                   windEl.style.color = '#e74c3c'; // 5.0m/s以上：赤
+               }
+              
+           } catch (e) {
+               console.log("データの読み込みを待機中...", e);
+           }
+       }
+       fetchKansoku();
+       setInterval(fetchKansoku, 60000);
+   </script>
+</body>
+</html>
