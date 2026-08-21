@@ -1,10 +1,10 @@
 {
     "temperature": 25.3,
-    "humidity": 56.8,
-    "pressure": 998.9,
-    "lux": 895.6,
+    "humidity": 56.7,
+    "pressure": 998.8,
+    "lux": 903.7,
     "wind_speed": 0.0,
-    "rain_judge": "午後は小雨の可能性あり、傘は要チェック。",
-    "laundry_match": "晴れ間活かし、外干しで早乾き、花粉対策もバッチリ。",
-    "last_update": "2026-08-21 16:15:49"
+    "rain_judge": "午後は雨の可能性が高く、注意が必要ですので、",
+    "laundry_match": "晴れ間を狙って外干し、乾き早し！風が吹けば更に速く。",
+    "last_update": "2026-08-21 16:16:15"
 }
