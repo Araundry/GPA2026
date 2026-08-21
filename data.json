@@ -2,9 +2,7 @@
     "temperature": 25.7,
     "humidity": 55.7,
     "pressure": 998.8,
-    "lux": 1169.3,
-    "wind_speed": 0.3,
-    "rain_judge": "午後は雨の可能性が低く、乾燥に適しています。",
-    "laundry_match": "日差しと風で早く乾く、外干しが最適です！",
-    "last_update": "2026-08-21 16:02:23"
+    "lux": 1096.2,
+    "wind_speed": 0.0,
+    "last_update": "2026-08-21 16:03:14"
 }
