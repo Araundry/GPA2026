@@ -1,8 +1,10 @@
 {
     "temperature": 25.5,
-    "humidity": 56.3,
+    "humidity": 56.2,
     "pressure": 998.8,
-    "lux": 810.2,
-    "wind_speed": 0.0,
-    "last_update": "2026-08-21 16:11:36"
+    "lux": 827.9,
+    "wind_speed": 4.7,
+    "rain_judge": "午後は小雨の可能性があり、注意が必要です。",
+    "laundry_match": "晴れ間を狙って、外干しでさっぱり乾かそう！",
+    "last_update": "2026-08-21 16:11:48"
 }
