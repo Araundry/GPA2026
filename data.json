@@ -2,7 +2,9 @@
     "temperature": 25.4,
     "humidity": 56.5,
     "pressure": 998.8,
-    "lux": 906.4,
+    "lux": 905.3,
     "wind_speed": 0.0,
-    "last_update": "2026-08-21 16:16:49"
+    "rain_judge": "午後は小雨の可能性あり、傘は要チェック。",
+    "laundry_match": "晴れ間活かし、外干しで早乾き、花粉対策もバッチリ。",
+    "last_update": "2026-08-21 16:16:52"
 }
