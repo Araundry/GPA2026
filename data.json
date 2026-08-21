@@ -1,10 +1,8 @@
 {
-    "temperature": 25.3,
-    "humidity": 56.9,
+    "temperature": 25.2,
+    "humidity": 57.1,
     "pressure": 998.8,
-    "lux": 830.1,
-    "wind_speed": 5.1,
-    "rain_judge": "午後は雨が降る可能性が高く、傘が必要ですので。",
-    "laundry_match": "今日の洗濯は外で乾かすと、すっきり爽快！",
-    "last_update": "2026-08-21 16:12:27"
+    "lux": 887.6,
+    "wind_speed": 0.0,
+    "last_update": "2026-08-21 16:12:39"
 }
